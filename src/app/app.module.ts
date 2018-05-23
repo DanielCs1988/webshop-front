@@ -12,6 +12,8 @@ import { CreditCardComponent } from './payment/credit-card/credit-card.component
 import { MenuComponent } from './navbar/menu/menu.component';
 import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
 import { LoginComponent } from './navbar/login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import { LoginComponent } from './navbar/login/login.component';
     LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
