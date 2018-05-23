@@ -14,6 +14,12 @@ import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.comp
 import { LoginComponent } from './navbar/login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthGuardService} from './services/auth-guard.service';
+import {AuthInterceptorService} from './services/auth-interceptor.service';
+import {OrderService} from './services/order.service';
+import {ProductOrderService} from './services/product-order.service';
 
 @NgModule({
   declarations: [
@@ -33,9 +39,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OrderService,
+    ProductOrderService,
+    AuthService,
+    AuthGuardService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
