@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  background: #433e90;
+  background: #00aced;
   position: fixed;
   top: 0;
   height: 4rem;
@@ -25,20 +25,29 @@ nav > ul {
   margin: 0;
 }
 
-#menu-toggle {
+#menu-toggle, #shopping-cart-toggle {
   perspective: 1000px;
   position: relative;
-  margin-left: 3rem
 }
-#menu-toggle:hover #menu {
-  display: block;
-}
-#menu {
+#menu, #shopping-cart {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 10rem;
-  min-height: 20rem;
-  background: #0c83e2;
+  min-width: 15rem;
+  background: #0084b4;
+  border-radius: 5px;
 }
+#menu-toggle:hover #menu, #shopping-cart-toggle:hover #shopping-cart {
+  display: block;
+  box-shadow: 0 0 10px 2000px rgba(0, 0, 0, 0.6), 3px 3px 5px rgba(0, 0, 0, 0.8);
+}
+#menu-toggle {
+  margin-left: 3rem;
+}
+#shopping-cart {
+  right: 0;
+}
+#menu {
+  left: 0;
+}
+
