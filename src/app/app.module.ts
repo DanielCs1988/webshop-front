@@ -20,6 +20,7 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {ProductOrderService} from './services/product-order.service';
     CreditCardComponent,
     MenuComponent,
     ShoppingCartComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
