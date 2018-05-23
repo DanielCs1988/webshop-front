@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background: #433e90;
   position: fixed;
   top: 0;
@@ -10,4 +10,35 @@ nav {
   box-shadow: 0 1px 4px 2px #4c4e56;
   z-index: 1;
   color: rgba(255, 255, 255, 0.7);
+}
+
+nav > ul > li, nav > div {
+  display: inline-block;
+  padding: 0 1rem;
+}
+nav > ul > li:hover, nav > div:hover {
+  opacity: 1;
+  font-weight: bold;
+  cursor: pointer;
+}
+nav > ul {
+  margin: 0;
+}
+
+#menu-toggle {
+  perspective: 1000px;
+  position: relative;
+  margin-left: 3rem
+}
+#menu-toggle:hover #menu {
+  display: block;
+}
+#menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 10rem;
+  min-height: 20rem;
+  background: #0c83e2;
 }

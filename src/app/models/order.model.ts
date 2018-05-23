@@ -1,3 +1,5 @@
+import {ProductOrder} from './productOrder.model';
+
 export class Order {
   constructor(
     public id: number,
