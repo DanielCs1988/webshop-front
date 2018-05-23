@@ -117,11 +117,3 @@ button:disabled, .btn:disabled {
   border: 1px solid red;
   box-shadow: 1px 1px 5px 2px rgba(255, 0, 0, 0.6);
 }
-
-.center-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  padding: 10px;
-}
