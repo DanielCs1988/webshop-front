@@ -1,0 +1,10 @@
+export class Order {
+  constructor(
+    public id: number,
+    public paymentId: string,
+    public status: string,
+    public date: string,
+    public productOrders: ProductOrder[] = []
+  ) {
+  }
+}
