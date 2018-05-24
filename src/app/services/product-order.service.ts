@@ -50,7 +50,7 @@ export class ProductOrderService {
     }
     for (let i = 0; i < this.productOrders.length; i++) {
       if (this.productOrders[i].productId === productId) {
-        if (amount === -1 && this.productOrders[i].quantity === 0) {
+        if (amount === -1 && this.productOrders[i].quantity === 1) {
           return;
         }
         this.productOrders[i].quantity += amount;

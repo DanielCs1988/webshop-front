@@ -28,7 +28,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeOrder(order) {
-    this.productOrderService.removeProductOrder(order.product.id);
+    this.productOrderService.removeProductOrder(order.id);
   }
 
   getSumPrice() {
