@@ -16,9 +16,9 @@
   </ul>
 
   <ul *ngIf="authService.isLoggedIn()">
-    <li>Orders</li>
+    <li routerLink="/order-history">Orders</li>
     <li routerLink="address">Address</li>
-    <li (click)="authService.logout()">Logout</li>
+    <li (click)="logout()">Logout</li>
   </ul>
 
   <div id="shopping-cart-toggle" *ngIf="authService.isLoggedIn()">Cart

@@ -32,6 +32,6 @@ export class OrderService {
   }
 
   getAllCompleted(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.url}/?get-all=true`)
+    return this.http.get<Order[]>(`${this.url}?get-all=true`)
   }
 }

@@ -3,10 +3,10 @@
   <h2>Total: {{order.total}} USD</h2>
   <hr>
   <table>
-    <tr *ngFor="let product of order.productOrders">
+    <tr *ngFor="let product of order.products">
       <td>{{product.name}}</td>
       <td>{{product.quantity}}</td>
-      <td>{{product.defaultPrice}} {{product.defaultCurrency}}</td>
+      <td>{{product.price}} {{product.currency}}</td>
     </tr>
   </table>
 </div>

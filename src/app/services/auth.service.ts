@@ -21,7 +21,6 @@ export class AuthService {
       user => {
         this.user = user;
         this.orderService.initOrder();
-        console.log(user);
       }
     );
   }

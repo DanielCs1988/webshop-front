@@ -18,7 +18,9 @@ export class OrderHistoryComponent implements OnInit {
         order => {
           return {
             'date': order.date,
-            'total': order.productOrders.map(product => product.quantity * product.product.defaultPrice),
+            'total': order.productOrders
+              .map(product => product.quantity * product.product.defaultPrice)
+              .reduce((a, b) => a + b, 0),
             'products': order.productOrders.map(
               productOrder => {
                 const product = productOrder.product;
