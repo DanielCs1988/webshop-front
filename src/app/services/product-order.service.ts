@@ -43,6 +43,9 @@ export class ProductOrderService implements OnInit {
     }
     for (let i = 0; i < this.productOrders.length; i++) {
       if (this.productOrders[i].productId === productId) {
+        if (amount === -1 && this.productOrders[i].quantity === 0) {
+          return;
+        }
         this.productOrders[i].quantity += amount;
         this.http.put(this.url, this.productOrders[i]).subscribe();
       }
