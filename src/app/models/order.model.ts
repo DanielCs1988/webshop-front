@@ -6,7 +6,7 @@ export class Order {
     public paymentId: string,
     public status: string,
     public date: string,
-    //public productOrders: ProductOrder[] = []
+    public productOrders: ProductOrder[] = []
   ) {
   }
 }

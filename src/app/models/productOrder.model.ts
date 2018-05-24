@@ -6,7 +6,7 @@ export class ProductOrder {
     public quantity: number,
     public orderId: number,
     public productId: number,
-    //public product: Product
+    public product: Product
   ) {
   }
 
