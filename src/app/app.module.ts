@@ -22,6 +22,7 @@ import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
+import {ProductListService} from './services/product-list.service';
 import {AddressService} from './services/address.service';
 
 @NgModule({
@@ -48,6 +49,7 @@ import {AddressService} from './services/address.service';
   ],
   providers: [
     OrderService,
+    ProductListService,
     ProductOrderService,
     SupplierService,
     AuthService,
