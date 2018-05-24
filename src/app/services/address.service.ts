@@ -3,7 +3,6 @@ import {Address} from '../models/address.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {AuthService} from './auth.service';
 
 @Injectable
 export class AddressService {

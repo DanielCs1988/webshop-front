@@ -23,6 +23,7 @@ import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
 import {AddressService} from './services/address.service';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {AddressService} from './services/address.service';
     MenuComponent,
     ShoppingCartComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
