@@ -1,5 +1,18 @@
-<div>Useful stuff 1</div>
-<div>Useful stuff 2</div>
-<div>Useful stuff 3</div>
-<div>Useful stuff 4</div>
-<div>Useful stuff 5</div>
+<div id="cart">
+
+  <div class="pane product-order" *ngFor="let c of i">
+    <button class="close-btn">&times;</button>
+    <img src="https://konzolvilag.azureedge.net/product_instances2/243438/pc-hp-omen-15-ce010nh-arnyekfekete-2gq14ea_thumb320.jpg?lmod=1515681186" alt="stuff">
+    <p>Product nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct name</p>
+    <div class="quantity-control">
+      <button class="rem-btn">-</button>
+      <span class="quantity">10 db</span>
+      <button class="add-btn">+</button>
+    </div>
+    <span class="price-tag">8000$</span>
+  </div>
+
+  <button class="btn checkout-btn">Checkout</button>
+  <span id="total-price">Total price: 567.000$</span>
+
+</div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  i = [1, 2, 3];
+
   constructor() { }
 
   ngOnInit() {
