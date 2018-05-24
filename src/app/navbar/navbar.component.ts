@@ -29,4 +29,14 @@ export class NavbarComponent implements OnInit {
   getNumberInCart() {
     return this.orders.map(productOrder => productOrder.quantity).reduce((a, b) => a + b, 0);
   }
+
+  showDiv() {
+    const cart = document.getElementById('cart');
+    cart.style.display = 'block';
+  }
+
+  hideDiv() {
+    const cart = document.getElementById('cart');
+    cart.style.display = 'none';
+  }
 }

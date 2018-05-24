@@ -38,5 +38,7 @@ export class ShoppingCartComponent implements OnInit {
 
   checkout() {
     this.router.navigate(['/address', 'checkout']);
+    const cart = document.getElementById('cart');
+    cart.style.display = 'none';
   }
 }

@@ -21,7 +21,7 @@
     <li (click)="logout()">Logout</li>
   </ul>
 
-  <div id="shopping-cart-toggle" *ngIf="authService.isLoggedIn()">Cart({{getNumberInCart()}})
+  <div id="shopping-cart-toggle" (mouseenter)="showDiv()" (mouseleave)="hideDiv()" *ngIf="authService.isLoggedIn()">Cart({{getNumberInCart()}})
     <div id="shopping-cart">
       <app-shopping-cart></app-shopping-cart>
     </div>
