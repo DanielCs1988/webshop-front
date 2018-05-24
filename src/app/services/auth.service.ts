@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {User} from '../models/user.model';
 import {Observable} from 'rxjs';
 import {OrderService} from './order.service';
@@ -14,8 +14,10 @@ export class AuthService {
 
   login(email: string, password: string) {
     const header = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
-    const credentials = {'email': email, 'password': password};
-    this.http.post<User>(environment.baseUrl + 'login', credentials, {headers: header}).subscribe(
+    const body = new HttpParams()
+      .set('email', email)
+      .set('password', password);
+    this.http.post<User>(environment.baseUrl + 'login', body.toString(), {headers: header}).subscribe(
       user => {
         this.user = user;
         this.orderService.initOrder();

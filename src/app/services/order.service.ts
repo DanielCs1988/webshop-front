@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Order} from '../models/order.model';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class OrderService {
@@ -28,5 +29,9 @@ export class OrderService {
     this.http.post<void>(this.url, {'id': id, 'paymentId': paymentId}, {headers: header}).subscribe(
       () => this.initOrder()
     );
+  }
+
+  getAllCompleted(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.url}?get-all=true`)
   }
 }

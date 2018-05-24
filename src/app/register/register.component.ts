@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +13,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerForm: FormGroup;
+
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+    this.registerForm = new FormGroup({
+      'userInfo': new FormGroup({
+        'id': new FormControl(0),
+        'name': new FormControl(null, [Validators.required]),
+        'phone': new FormControl(null, [Validators.required]),
+        'email': new FormControl(null, [Validators.required, Validators.email], [this.emailFree]),
+        'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      }),
+      'verify-password': new FormControl(null, [Validators.required, Validators.minLength(5)])
+    });
   }
 
+  onSubmit(){
+    if (!this.registerForm.valid) {
+      return;
+    }
+    this.authService.register(this.registerForm.get('userInfo').value).subscribe(
+      () => this.router.navigate(['/'])
+    );
+  }
+
+  emailFree(control: FormControl): Promise<any> | Observable<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.http.get(environment.baseUrl + 'register').subscribe(isTaken => {
+        if (isTaken) {
+          resolve(null);
+        } else {
+          resolve({'emailTaken': true});
+        }
+      });
+    });
+  }
 }
