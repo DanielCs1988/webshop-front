@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -14,8 +12,9 @@ import {HttpClient} from '@angular/common/http';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  passwordMismatch = false;
 
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -26,12 +25,12 @@ export class RegisterComponent implements OnInit {
         'email': new FormControl(null, [Validators.required, Validators.email], [this.emailFree.bind(this)]),
         'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
       }),
-      'verify-password': new FormControl(null, [Validators.required, Validators.minLength(5)])
+      'verifyPassword': new FormControl(null, [Validators.required, Validators.minLength(5)])
     });
   }
 
   onSubmit(){
-    if (!this.registerForm.valid) {
+    if (!this.registerForm.valid || this.registerForm.get('userInfo').value.password !== this.registerForm.value.verifyPassword) {
       return;
     }
     this.authService.register(this.registerForm.get('userInfo').value).subscribe(

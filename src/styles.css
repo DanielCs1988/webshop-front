@@ -122,3 +122,31 @@ button:disabled, .btn:disabled {
   border: 1px solid red;
   box-shadow: 1px 1px 5px 2px rgba(255, 0, 0, 0.6);
 }
+
+.helper-text {
+  margin: 10px 0 5px 5px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: rgba(255, 17, 51, .8);
+}
+.form-control + .helper-text {
+  display: none;
+}
+.form-control.ng-invalid.ng-touched + .helper-text {
+  display: inline-block;
+}
+.form-control.ng-pending + .helper-text {
+  border: #8565c4 1px solid;
+  animation: flashing-border 0.2s infinite ease-in-out;
+}
+@keyframes flashing-border {
+  0% {
+    box-shadow: 0 0 5px 0 #8565c4;
+  }
+  50% {
+    box-shadow: 0 0 5px 5px #b19cd9;
+  }
+  100% {
+    box-shadow: 0 0 5px 0 #8565c4;
+  }
+}
