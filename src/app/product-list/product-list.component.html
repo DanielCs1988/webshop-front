@@ -1,5 +1,5 @@
 <div class="grid">
-  <div *ngFor="let product of products" class="col-3 pane">
+  <div *ngFor="let product of products | filter:categoryFilter:supplierFilter" class="col-3 pane">
     <img [src]="product.imageName" alt="{{ product.name }}">
     <h3>{{ product.name }}</h3>
     <p>{{ product.description }}</p>
