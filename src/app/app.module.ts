@@ -11,7 +11,7 @@ import { PaypalComponent } from './payment/paypal/paypal.component';
 import { CreditCardComponent } from './payment/credit-card/credit-card.component';
 import { MenuComponent } from './navbar/menu/menu.component';
 import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
-import { LoginComponent } from './navbar/login/login.component';
+import { LoginComponent } from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './services/auth.service';
@@ -23,6 +23,8 @@ import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
 import {ProductCategoryService} from './services/product-category.service';
+import {ProductListService} from './services/product-list.service';
+import {AddressService} from './services/address.service';
 
 @NgModule({
   declarations: [
@@ -48,11 +50,13 @@ import {ProductCategoryService} from './services/product-category.service';
   ],
   providers: [
     OrderService,
+    ProductListService,
     ProductOrderService,
     SupplierService,
     ProductCategoryService,
     AuthService,
     AuthGuardService,
+    AddressService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
