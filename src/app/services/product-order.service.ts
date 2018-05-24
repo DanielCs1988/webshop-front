@@ -50,7 +50,7 @@ export class ProductOrderService implements OnInit {
   }
 
   removeProductOrder(poId: number) {
-    this.productOrders = this.productOrders.filter(po => po.id === poId);
+    this.productOrders = this.productOrders.filter(po => po.id !== poId);
     this.http.delete(`${this.url}?id=${poId}`).subscribe();
   }
 }
