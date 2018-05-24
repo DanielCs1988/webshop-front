@@ -1,22 +1,28 @@
-import {Injectable, OnInit} from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {OrderService} from './order.service';
 import {Product} from '../models/product.model';
 import {ProductOrder} from '../models/productOrder.model';
 import {environment} from '../../environments/environment';
+import {Order} from '../models/order.model';
 
 @Injectable()
-export class ProductOrderService implements OnInit {
+export class ProductOrderService {
 
   productOrders: ProductOrder[];
   orderId: number;
   private url = environment.baseUrl + 'product-order';
+  productOrdersChanged = new EventEmitter<ProductOrder[]>();
 
-  constructor(private http: HttpClient, private orderService: OrderService) {}
-
-  ngOnInit(): void {
-    this.productOrders = this.orderService.order.productOrders;
-    this.orderId = this.orderService.order.id;
+  constructor(private http: HttpClient, private orderService: OrderService) {
+    this.orderService.orderChanged.subscribe(
+      (order: Order) => {
+        this.orderId = order.id;
+        this.productOrders = order.productOrders;
+        this.productOrdersChanged.emit(order.productOrders);
+        console.log(order.productOrders);
+      }
+    );
   }
 
   itemToCart(product: Product) {
@@ -33,6 +39,7 @@ export class ProductOrderService implements OnInit {
       id => {
         productOrder.id = id;
         this.productOrders.push(productOrder);
+        this.productOrdersChanged.emit(this.productOrders);
       }
     );
   }
@@ -43,8 +50,12 @@ export class ProductOrderService implements OnInit {
     }
     for (let i = 0; i < this.productOrders.length; i++) {
       if (this.productOrders[i].productId === productId) {
+        if (amount === -1 && this.productOrders[i].quantity === 1) {
+          return;
+        }
         this.productOrders[i].quantity += amount;
         this.http.put(this.url, this.productOrders[i]).subscribe();
+        this.productOrdersChanged.emit(this.productOrders);
       }
     }
   }
@@ -52,5 +63,6 @@ export class ProductOrderService implements OnInit {
   removeProductOrder(poId: number) {
     this.productOrders = this.productOrders.filter(po => po.id !== poId);
     this.http.delete(`${this.url}?id=${poId}`).subscribe();
+    this.productOrdersChanged.emit(this.productOrders);
   }
 }

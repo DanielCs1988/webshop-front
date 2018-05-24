@@ -26,6 +26,7 @@ import {ProductCategoryService} from './services/product-category.service';
 import {ProductListService} from './services/product-list.service';
 import {AddressService} from './services/address.service';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import {ClickStopPropagation} from './shared/stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     ShoppingCartComponent,
     LoginComponent,
     FilterPipe,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    ClickStopPropagation
   ],
   imports: [
     BrowserModule,
