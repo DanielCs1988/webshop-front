@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductCategoryService} from '../../services/product-category.service';
+import {SupplierService} from '../../services/supplier.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  categories = [];
+  suppliers = [];
 
-  constructor() { }
+  constructor(public productCategoryService: ProductCategoryService, public supplierService: SupplierService) { }
 
   ngOnInit() {
+    this.productCategoryService.getCategories().subscribe(
+      categories => this.categories = categories
+    );
+    this.supplierService.getSuppliers().subscribe(
+      suppliers => this.suppliers = suppliers
+    );
   }
 
 }
