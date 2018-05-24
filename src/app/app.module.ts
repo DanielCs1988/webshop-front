@@ -22,6 +22,7 @@ import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
+import {ProductCategoryService} from './services/product-category.service';
 import {ProductListService} from './services/product-list.service';
 import {AddressService} from './services/address.service';
 
@@ -52,6 +53,7 @@ import {AddressService} from './services/address.service';
     ProductListService,
     ProductOrderService,
     SupplierService,
+    ProductCategoryService,
     AuthService,
     AuthGuardService,
     AddressService,
