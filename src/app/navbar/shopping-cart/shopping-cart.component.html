@@ -1,15 +1,14 @@
 <div id="cart">
-
-  <div class="pane product-order" *ngFor="let c of i">
+   <div class="pane product-order" *ngFor="let order of orders">
     <button class="close-btn">&times;</button>
-    <img src="https://konzolvilag.azureedge.net/product_instances2/243438/pc-hp-omen-15-ce010nh-arnyekfekete-2gq14ea_thumb320.jpg?lmod=1515681186" alt="stuff">
-    <p>Product nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct nameProduct name</p>
+    <img src="{{order.product.imageName}}" alt="stuff">
+    <p>{{order.name}}</p>
     <div class="quantity-control">
       <button class="rem-btn">-</button>
-      <span class="quantity">10 db</span>
+      <span class="quantity">{{order.quantity}}db</span>
       <button class="add-btn">+</button>
     </div>
-    <span class="price-tag">8000$</span>
+    <span class="price-tag">{{order.quantity * order.product.defaultPrice}}$</span>
   </div>
 
   <button class="btn checkout-btn">Checkout</button>
