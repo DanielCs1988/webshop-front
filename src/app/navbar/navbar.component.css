@@ -1,7 +1,7 @@
 nav {
   display: flex;
-  justify-content: center;
-  background: #433e90;
+  justify-content: space-between;
+  background: #00aced;
   position: fixed;
   top: 0;
   height: 4rem;
@@ -11,3 +11,43 @@ nav {
   z-index: 1;
   color: rgba(255, 255, 255, 0.7);
 }
+
+nav > ul > li, nav > div {
+  display: inline-block;
+  padding: 0 1rem;
+}
+nav > ul > li:hover, nav > div:hover {
+  opacity: 1;
+  font-weight: bold;
+  cursor: pointer;
+}
+nav > ul {
+  margin: 0;
+}
+
+#menu-toggle, #shopping-cart-toggle {
+  perspective: 1000px;
+  position: relative;
+}
+#menu, #shopping-cart {
+  display: none;
+  position: absolute;
+  top: 100%;
+  min-width: 15rem;
+  background: #0084b4;
+  border-radius: 5px;
+}
+#menu-toggle:hover #menu, #shopping-cart-toggle:hover #shopping-cart {
+  display: block;
+  box-shadow: 0 0 10px 2000px rgba(0, 0, 0, 0.6), 3px 3px 5px rgba(0, 0, 0, 0.8);
+}
+#menu-toggle {
+  margin-left: 3rem;
+}
+#shopping-cart {
+  right: 0;
+}
+#menu {
+  left: 0;
+}
+
