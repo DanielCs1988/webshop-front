@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   register(user: User): Observable<void> {
-    return this.http.post(environment.baseUrl + 'register', user);
+    return this.http.post<void>(environment.baseUrl + 'register', user);
   }
 
   isLoggedIn(): boolean {
