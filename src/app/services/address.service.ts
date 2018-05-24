@@ -3,20 +3,19 @@ import {Address} from '../models/address.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {AuthService} from './auth.service';
 
-@Injectable
+@Injectable()
 export class AddressService {
-  url = environment.baseUrl + '/address';
+  url = environment.baseUrl + 'address';
 
   constructor(private http: HttpClient) {}
 
   modify(address: Address) {
-    this.http.put(this.url, address);
+    this.http.put(this.url, address).subscribe();
   }
 
   add(address: Address) {
-    this.http.post(this.url, address);
+    this.http.post(this.url, address).subscribe();
   }
 
   get(): Observable<Address> {

@@ -10,18 +10,18 @@
     Codeberg's Shop of Needful Things
   </div>
 
-  <ul>
+  <ul *ngIf="!authService.isLoggedIn()">
     <li routerLink="register">Sign Up</li>
     <li routerLink="login">Login</li>
   </ul>
 
-  <ul>
+  <ul *ngIf="authService.isLoggedIn()">
     <li>Orders</li>
     <li routerLink="address">Address</li>
-    <li>Logout</li>
+    <li (click)="authService.logout()">Logout</li>
   </ul>
 
-  <div id="shopping-cart-toggle">Cart
+  <div id="shopping-cart-toggle" *ngIf="authService.isLoggedIn()">Cart
     <div id="shopping-cart">
       <app-shopping-cart></app-shopping-cart>
     </div>
