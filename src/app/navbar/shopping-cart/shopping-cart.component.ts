@@ -32,9 +32,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getSumPrice() {
-    for (let order of this.orders) {
-      let sumPrice = 0;
-      sumPrice += order.product.defaultPrice * order.quantity;
-    }
+    return this.orders.map(productOrder => productOrder.quantity * productOrder.product.defaultPrice).reduce((a, b) => a + b, 0);
   }
 }
