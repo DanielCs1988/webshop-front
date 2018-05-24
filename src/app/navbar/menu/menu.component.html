@@ -2,8 +2,8 @@
      routerLink="/product-list"
      [queryParams]="{'category': category.id}"
 >{{category.name}}
-  <ul *ngFor="let supplier of suppliers">
-    <li routerLink="/product-list" [queryParams]="{'category': category.id, 'supplier': supplier.id}">
+  <ul>
+    <li *ngFor="let supplier of suppliers" routerLink="/product-list" [queryParams]="{'category': category.id, 'supplier': supplier.id}">
       {{supplier.name}}
     </li>
   </ul>
