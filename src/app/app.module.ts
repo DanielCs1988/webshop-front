@@ -21,6 +21,7 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
+import {SupplierService} from './services/supplier.service';
 import {AddressService} from './services/address.service';
 
 @NgModule({
@@ -48,6 +49,7 @@ import {AddressService} from './services/address.service';
   providers: [
     OrderService,
     ProductOrderService,
+    SupplierService,
     AuthService,
     AuthGuardService,
     AddressService,
