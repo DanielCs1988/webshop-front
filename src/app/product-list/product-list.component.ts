@@ -23,8 +23,9 @@ export class ProductListComponent implements OnInit {
     );
     this.route.queryParams.subscribe(
       (params: Params) => {
-        this.categoryFilter = +params['category'];
-        this.supplierFilter = +params['supplier'];
+        this.categoryFilter = params['category'] ? +params['category'] : null;
+        this.supplierFilter = params['supplier'] ? +params['supplier'] : null;
+        console.log(this.categoryFilter, this.supplierFilter);
       }
     );
   }
