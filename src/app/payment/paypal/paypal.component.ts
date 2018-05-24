@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-paypal',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaypalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
   }
 
+  onSendOrder() {
+    this.orderService.sendOrder(Math.random()*90000000+10000000+'')
+  }
 }
