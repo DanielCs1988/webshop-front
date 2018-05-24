@@ -18,6 +18,7 @@ export class OrderService {
       order => {
         this.order = order;
         this.orderChanged.emit(order);
+        console.log(this.order);
       }
     );
   }

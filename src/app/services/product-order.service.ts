@@ -4,24 +4,23 @@ import {OrderService} from './order.service';
 import {Product} from '../models/product.model';
 import {ProductOrder} from '../models/productOrder.model';
 import {environment} from '../../environments/environment';
+import {Order} from '../models/order.model';
 
 @Injectable()
-export class ProductOrderService implements OnInit {
+export class ProductOrderService {
 
   productOrders: ProductOrder[];
   orderId: number;
   private url = environment.baseUrl + 'product-order';
   productOrdersChanged = new EventEmitter<ProductOrder[]>();
 
-  constructor(private http: HttpClient, private orderService: OrderService) {}
-
-  ngOnInit(): void {
+  constructor(private http: HttpClient, private orderService: OrderService) {
     this.orderService.orderChanged.subscribe(
-      order => {
+      (order: Order) => {
         this.orderId = order.id;
         this.productOrders = order.productOrders;
-        this.productOrdersChanged.emit(this.productOrders);
-        console.log(this.productOrders);
+        this.productOrdersChanged.emit(order.productOrders);
+        console.log(order.productOrders);
       }
     );
   }
