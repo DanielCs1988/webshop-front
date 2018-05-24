@@ -22,6 +22,7 @@ import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
+import {ProductListService} from './services/product-list.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {SupplierService} from './services/supplier.service';
   ],
   providers: [
     OrderService,
+    ProductListService,
     ProductOrderService,
     SupplierService,
     AuthService,
