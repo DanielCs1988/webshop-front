@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'address', component: AddressComponent},
+  {path: 'address/:checkout', component: AddressComponent},
   {path: 'payment', component: PaymentComponent, children: [
       {path: 'paypal', component: PaypalComponent},
       {path: 'credit-card', component: CreditCardComponent}
