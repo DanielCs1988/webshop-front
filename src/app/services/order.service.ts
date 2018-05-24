@@ -1,8 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Order} from '../models/order.model';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class OrderService {
@@ -11,7 +12,7 @@ export class OrderService {
   url = environment.baseUrl + 'order';
   orderChanged = new EventEmitter<Order>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   initOrder() {
     this.http.get<Order>(this.url).subscribe(
@@ -23,12 +24,19 @@ export class OrderService {
     );
   }
 
-  sendOrder(paymentId: string) {
+  sendOrder() {
     const header = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    const paymentId = Math.random() *90000000 + 10000000+ '';
     const id = this.order.id;
+    const body = new HttpParams()
+      .set('id', id + '')
+      .set('paymentId', paymentId);
     this.order = null;
-    this.http.post<void>(this.url, {'id': id, 'paymentId': paymentId}, {headers: header}).subscribe(
-      () => this.initOrder()
+    this.http.post<void>(this.url, body.toString(), {headers: header}).subscribe(
+      () => {
+        this.initOrder();
+        this.router.navigate(['/']);
+      }
     );
   }
 

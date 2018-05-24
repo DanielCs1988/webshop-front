@@ -8,12 +8,12 @@ import {OrderService} from '../../services/order.service';
 })
 export class PaypalComponent implements OnInit {
 
-  constructor(private orderService: OrderService) { }
+  constructor(public orderService: OrderService) { }
 
   ngOnInit() {
   }
 
   onSendOrder() {
-    this.orderService.sendOrder(Math.random()*90000000+10000000+'')
+
   }
 }
