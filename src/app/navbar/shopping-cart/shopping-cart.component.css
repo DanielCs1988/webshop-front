@@ -47,3 +47,10 @@ p {
   bottom: 1%;
   right: 3%;
 }
+
+.btn {
+  display: inline-block;
+  padding: 7px;
+  line-height: 14px;
+  border-radius: 28px;
+}

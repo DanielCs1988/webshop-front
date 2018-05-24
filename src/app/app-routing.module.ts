@@ -10,6 +10,7 @@ import {CreditCardComponent} from './payment/credit-card/credit-card.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import {OrderConfirmedComponent} from './order-confirmed/order-confirmed.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
       {path: 'paypal', component: PaypalComponent},
       {path: 'credit-card', component: CreditCardComponent}
     ]},
+  {path: 'confirm-page', component: OrderConfirmedComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'product-list', pathMatch: 'full'},
   {path: '**', redirectTo: ''}
 ];

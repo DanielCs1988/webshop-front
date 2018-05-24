@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class OrderService {
 
   order: Order;
+  sentOrder: Order;
   url = environment.baseUrl + 'order';
   orderChanged = new EventEmitter<Order>();
 
@@ -31,11 +32,12 @@ export class OrderService {
     const body = new HttpParams()
       .set('id', id + '')
       .set('paymentId', paymentId);
-    this.order = null;
+    this.sentOrder = this.order;
+    this.sentOrder.paymentId = paymentId;
     this.http.post<void>(this.url, body.toString(), {headers: header}).subscribe(
       () => {
         this.initOrder();
-        this.router.navigate(['/']);
+        this.router.navigate(['/confirm-page']);
       }
     );
   }

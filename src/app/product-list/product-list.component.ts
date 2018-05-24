@@ -3,6 +3,7 @@ import {Product} from '../models/product.model';
 import {ProductListService} from '../services/product-list.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ProductOrderService} from '../services/product-order.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,8 +17,12 @@ export class ProductListComponent implements OnInit {
   categoryFilter: number = null;
   supplierFilter: number = null;
 
-  constructor(public productListService: ProductListService, private route: ActivatedRoute,
-              public productOrderService: ProductOrderService) { }
+  constructor(
+    public productListService: ProductListService,
+    public productOrderService: ProductOrderService,
+    public authService: AuthService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.productListService.getProducts().subscribe(

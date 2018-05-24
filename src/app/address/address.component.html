@@ -1,4 +1,5 @@
-<form class="center-block" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+<form class="pane center-block" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+
   <div formGroupName="billing">
     <div class="headline">
       <h2>Billing Address</h2>
@@ -20,7 +21,9 @@
         <input type="text" class="form-control" id="billing-street" formControlName="street">
     </div>
   </div>
+
   <hr>
+
   <div formGroupName="shipping">
     <div class="headline">
       <h2>Shipping Address</h2>
@@ -42,6 +45,7 @@
       <label for="shipping-street">Street</label>
       <input type="text" class="form-control" id="shipping-street" formControlName="street">
     </div>
-    <button type="submit" class="btn">{{checkout?'Next':'Save'}}</button>
+    <button type="submit" class="btn">{{ checkout ? 'Proceed to Payment' : 'Save Address' }}</button>
   </div>
+
 </form>
