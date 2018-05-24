@@ -22,6 +22,7 @@ import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
 import {SupplierService} from './services/supplier.service';
+import {AddressService} from './services/address.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {SupplierService} from './services/supplier.service';
     SupplierService,
     AuthService,
     AuthGuardService,
+    AddressService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
