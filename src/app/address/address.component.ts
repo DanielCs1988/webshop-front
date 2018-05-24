@@ -27,6 +27,7 @@ export class AddressComponent implements OnInit {
     this.addressForm = new FormGroup({
       'billing': new FormGroup({
         'id': new FormControl(-1),
+        'userId': new FormControl(-1),
         'zipcode': new FormControl(null, [Validators.required]),
         'country': new FormControl(null, [Validators.required]),
         'city': new FormControl(null, [Validators.required]),
@@ -34,6 +35,7 @@ export class AddressComponent implements OnInit {
       }),
       'shipping': new FormGroup({
         'id': new FormControl(-1),
+        'userId': new FormControl(-1),
         'zipcode': new FormControl(null, [Validators.required]),
         'country': new FormControl(null, [Validators.required]),
         'city': new FormControl(null, [Validators.required]),

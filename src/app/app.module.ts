@@ -11,7 +11,7 @@ import { PaypalComponent } from './payment/paypal/paypal.component';
 import { CreditCardComponent } from './payment/credit-card/credit-card.component';
 import { MenuComponent } from './navbar/menu/menu.component';
 import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
-import { LoginComponent } from './navbar/login/login.component';
+import { LoginComponent } from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './services/auth.service';
