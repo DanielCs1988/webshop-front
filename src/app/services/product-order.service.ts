@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {OrderService} from './order.service';
 import {Product} from '../models/product.model';
@@ -11,12 +11,19 @@ export class ProductOrderService implements OnInit {
   productOrders: ProductOrder[];
   orderId: number;
   private url = environment.baseUrl + 'product-order';
+  productOrdersChanged = new EventEmitter<ProductOrder[]>();
 
   constructor(private http: HttpClient, private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.productOrders = this.orderService.order.productOrders;
-    this.orderId = this.orderService.order.id;
+    this.orderService.orderChanged.subscribe(
+      order => {
+        this.orderId = order.id;
+        this.productOrders = order.productOrders;
+        this.productOrdersChanged.emit(this.productOrders);
+        console.log(this.productOrders);
+      }
+    );
   }
 
   itemToCart(product: Product) {
@@ -33,6 +40,7 @@ export class ProductOrderService implements OnInit {
       id => {
         productOrder.id = id;
         this.productOrders.push(productOrder);
+        this.productOrdersChanged.emit(this.productOrders);
       }
     );
   }
@@ -48,6 +56,7 @@ export class ProductOrderService implements OnInit {
         }
         this.productOrders[i].quantity += amount;
         this.http.put(this.url, this.productOrders[i]).subscribe();
+        this.productOrdersChanged.emit(this.productOrders);
       }
     }
   }
@@ -55,5 +64,6 @@ export class ProductOrderService implements OnInit {
   removeProductOrder(poId: number) {
     this.productOrders = this.productOrders.filter(po => po.id !== poId);
     this.http.delete(`${this.url}?id=${poId}`).subscribe();
+    this.productOrdersChanged.emit(this.productOrders);
   }
 }

@@ -14,7 +14,9 @@ export class ShoppingCartComponent implements OnInit {
   constructor(public productOrderService: ProductOrderService) { }
 
   ngOnInit() {
-    this.orders = this.productOrderService.productOrders;
+    this.productOrderService.productOrdersChanged.subscribe(
+      productOrders => this.orders = productOrders
+    );
   }
 
   decrementQuantity(order) {
