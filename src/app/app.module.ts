@@ -21,6 +21,7 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {OrderService} from './services/order.service';
 import {ProductOrderService} from './services/product-order.service';
 import { FilterPipe } from './shared/filter.pipe';
+import {SupplierService} from './services/supplier.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FilterPipe } from './shared/filter.pipe';
   providers: [
     OrderService,
     ProductOrderService,
+    SupplierService,
     AuthService,
     AuthGuardService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
