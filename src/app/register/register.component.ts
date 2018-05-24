@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
         'id': new FormControl(0),
         'name': new FormControl(null, [Validators.required]),
         'phone': new FormControl(null, [Validators.required]),
-        'email': new FormControl(null, [Validators.required, Validators.email], [this.emailFree]),
+        'email': new FormControl(null, [Validators.required, Validators.email], [this.emailFree.bind(this)]),
         'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
       }),
       'verify-password': new FormControl(null, [Validators.required, Validators.minLength(5)])
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
   emailFree(control: FormControl): Promise<any> | Observable<any> {
     return new Promise<any>((resolve, reject) => {
-      this.http.get(environment.baseUrl + 'register').subscribe(isTaken => {
+      this.authService.isEmailTaken(control.value).subscribe(isTaken => {
         if (isTaken) {
           resolve(null);
         } else {
