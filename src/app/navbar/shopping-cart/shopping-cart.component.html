@@ -11,7 +11,7 @@
     <span class="price-tag">{{order.quantity * order.product.defaultPrice}}$</span>
   </div>
 
-  <button class="btn checkout-btn">Checkout</button>
+  <button class="btn checkout-btn" (click)="checkout()">Checkout</button>
   <span id="total-price">Total price: {{getSumPrice()}}$</span>
 
 </div>
