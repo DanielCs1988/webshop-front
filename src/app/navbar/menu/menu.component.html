@@ -1,35 +1,6 @@
-<div>Product Category 1
-  <ul>
-    <li>Supplier 1</li>
-    <li>Supplier 2</li>
-    <li>Supplier 3</li>
+<div *ngFor="let category of categories">{{category.name}}
+  <ul *ngFor="let supplier of suppliers">
+    <li>{{supplier.name}}</li>
   </ul>
 </div>
-<div>Product Category 2
-  <ul>
-    <li>Supplier 1</li>
-    <li>Supplier 2</li>
-    <li>Supplier 3</li>
-  </ul>
-</div>
-<div>Product Category 3
-  <ul>
-    <li>Supplier 1</li>
-    <li>Supplier 2</li>
-    <li>Supplier 3</li>
-  </ul>
-</div>
-<div>Product Category 4
-  <ul>
-    <li>Supplier 1</li>
-    <li>Supplier 2</li>
-    <li>Supplier 3</li>
-  </ul>
-</div>
-<div>Product Category 5
-  <ul>
-    <li>Supplier 1</li>
-    <li>Supplier 2</li>
-    <li>Supplier 3</li>
-  </ul>
-</div>
+

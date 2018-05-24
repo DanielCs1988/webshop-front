@@ -2,15 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Supplier} from '../models/supplier.model';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class SupplierService {
-  suppliers: Supplier[];
-  url = environment.baseUrl+'suppliers';
+
+  url = environment.baseUrl + 'supplier';
 
   constructor(private http: HttpClient) {
-    http.get<Supplier[]>(this.url).subscribe(
-      suppliers => this.suppliers = suppliers
-    )
+  }
+
+  getSuppliers(): Observable<Supplier[]> {
+    return this.http.get<Supplier[]>(this.url);
   }
 }
