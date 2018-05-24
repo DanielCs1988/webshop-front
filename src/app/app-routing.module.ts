@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'address', component: AddressComponent},
+  {path: 'address/:checkout', component: AddressComponent},
   {path: 'payment', component: PaymentComponent, children: [
       {path: 'paypal', component: PaypalComponent},
       {path: 'credit-card', component: CreditCardComponent}
