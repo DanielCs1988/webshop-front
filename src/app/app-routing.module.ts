@@ -7,6 +7,7 @@ import {AddressComponent} from './address/address.component';
 import {PaymentComponent} from './payment/payment.component';
 import {PaypalComponent} from './payment/paypal/paypal.component';
 import {CreditCardComponent} from './payment/credit-card/credit-card.component';
+import {OrderHistoryComponent} from './order-history/order-history.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuardService} from './services/auth-guard.service';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'address', component: AddressComponent, canActivate: [AuthGuardService]},
+  {path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuardService]},
   {path: 'address/:checkout', component: AddressComponent, canActivate: [AuthGuardService]},
   {path: 'payment', component: PaymentComponent, canActivate: [AuthGuardService], children: [
       {path: 'paypal', component: PaypalComponent},

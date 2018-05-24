@@ -1,0 +1,12 @@
+<div *ngFor="let order of completedOrders" class="order">
+  <h2>{{order.date}}</h2>
+  <h2>Total: {{order.total}} USD</h2>
+  <hr>
+  <table>
+    <tr *ngFor="let product of order.productOrders">
+      <td>{{product.name}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.defaultPrice}} {{product.defaultCurrency}}</td>
+    </tr>
+  </table>
+</div>
