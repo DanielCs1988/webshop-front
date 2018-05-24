@@ -7,9 +7,11 @@ import {AddressComponent} from './address/address.component';
 import {PaymentComponent} from './payment/payment.component';
 import {PaypalComponent} from './payment/paypal/paypal.component';
 import {CreditCardComponent} from './payment/credit-card/credit-card.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'address', component: AddressComponent},
   {path: 'payment', component: PaymentComponent, children: [
