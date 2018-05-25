@@ -47,7 +47,10 @@
         <div class="helper-text">Your passwords have to match!</div>
       </div>
 
-      <button type="submit" class="btn btn-block">Sign Up</button>
+      <button type="submit" class="btn btn-block"
+              [disabled]="!registerForm.valid || registerForm.get('userInfo.password').value !== registerForm.get('verifyPassword').value">
+        Sign Up
+      </button>
 
 </form>
 

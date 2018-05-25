@@ -14,7 +14,9 @@
     <div class="helper-text">Your password has to be at least 5 characters long!</div>
   </div>
 
-  <button type="submit" class="btn btn-block">Login</button>
+  <button type="submit" class="btn btn-block" [disabled]="!loginForm.valid">
+    Login
+  </button>
 
 </form>
 

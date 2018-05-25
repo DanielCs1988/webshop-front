@@ -45,7 +45,9 @@
       <label for="shipping-street">Street</label>
       <input type="text" class="form-control" id="shipping-street" formControlName="street">
     </div>
-    <button type="submit" class="btn">{{ checkout ? 'Proceed to Payment' : 'Save Address' }}</button>
+    <button type="submit" class="btn" [disabled]="!addressForm.valid">
+      {{ checkout ? 'Proceed to Payment' : 'Save Address' }}
+    </button>
   </div>
 
 </form>
