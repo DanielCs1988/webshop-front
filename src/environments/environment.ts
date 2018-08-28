@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: '/webshop/'
+  baseUrl: 'https://codeberg-webshop.herokuapp.com/webshop/'
 };
 
 /*
