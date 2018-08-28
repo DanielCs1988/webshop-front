@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/Mercury-NG'));
+app.use(express.static(__dirname + '/dist/webshop-ng'));
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/Mercury-NG/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/webshop-ng/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
