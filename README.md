@@ -1,27 +1,29 @@
-# WebshopNg
+# Webshop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+This project was created by me and my team during the second half of the 3rd, the OOP/Java module of Codecool. 
+The task was to create an online webshop within the timeframe of 1 week-long sprints, 3 sprints in total. The official
+guidelines (and thus the user stories) focused on the backend implementation, however we had decided to learn
+a popular frontend framework in our spare time instead of using the provided Thymeleaf template engine.
 
-## Development server
+[Here](https://github.com/DanielCs1988/webshop) is the repository link for the backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can check out the deployed webshop [here](https://codeberg-webshop.firebaseapp.com).
+The backend will take a couple of seconds to load for the first time, as it is put to sleep automatically by Heroku,
+where it is deployed. The frontend is hosted on Google Firebase.
 
-## Code scaffolding
+# Frontend: Angular 6 (React previously)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+We originally built the frontend using React, but during the last sprint decided to switch to Angular, so
+the entirety of it was rewritten. During the project's lifecycle a separate repository was
+maintained for the single page application(s). As a sidenote, we dropped the usage of Bootstrap in this
+project, so all the styles and animations are written in pure CSS, using new built-in features like the
+flexbox and grid displays.  
 
-## Build
+# Backend: Java SE8 with PostgreSQL database
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The web routes are set up using Java Servlets, powered by a Jetty server. Database connection is handled by
+JDBC, using the DAO pattern and a modular, reusable utility package to make performing CRUD operations
+simple and powerful, using JAVA generics. Unit tests are using JUnit5.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The app creates JWT tokens for registered users using the HSA256 algorithm, and after that all authentication
+and authorization is dealt with via those tokens.
